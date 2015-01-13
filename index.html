@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Cache : xmemcache serialize">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Cache</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/xydu/cache">View on GitHub</a>
+
+          <h1 id="project_title">Cache</h1>
+          <h2 id="project_tagline">xmemcache serialize</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/xydu/cache/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/xydu/cache/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>add hessian serialize for xmemcache client.
+guide:
+  you can change xmemcache client default serialize like this. 
+    
+        
+            ip:port
+        
+        
+            
+        
+        
+            
+        
+        </p>
+
+
+
+
+
+
+
+<pre><code>        &lt;bean class="com.cache4j.transcoder.HessianSerializingTranscoder"/&gt;
+    &lt;/property&gt;
+    &lt;property name="failureMode" value="false" /&gt;
+&lt;/bean&gt;
+</code></pre>
+
+<p>if you don't want change xmemecache default serialize, you can used by single method.
+eg:
+  memcachedClient.setWithNoReply(key, DEFAULT_EXPER_TIME, value, definedTranscoder);
+  the parameter definedTranscoder is defined by you, and  it must implements Transcoder;</p>
+
+<p>also you can use cache4j util class (CacheClient.java)<br>
+it has get and set method.</p>
+
+<pre><code>&lt;T&gt; T get(String key,Callable&lt;? extends T&gt; callable,final boolean loadDB) throws Exception;
+
+&lt;T&gt; T get(String key,int exper,Callable&lt;? extends T&gt; callable,final boolean loadDB) throws Exception;
+
+&lt;T&gt; T getx(String key,Callable&lt;? extends T&gt; callable,final boolean loadDB) throws Exception;
+
+&lt;T&gt; T hget(String key,Callable&lt;? extends T&gt; callable,final boolean loadDB) throws Exception;
+
+&lt;T&gt; T hgetx(String key,Callable&lt;? extends T&gt; callable,final boolean loadDB) throws Exception;
+
+&lt;T&gt; boolean set(String key,T value);
+
+&lt;T&gt; boolean set(String key,T value,int exper);
+
+&lt;T&gt; boolean hset(String key,T value);
+
+&lt;T&gt; boolean hset(String key,T value, int exper);
+
+boolean delete(String key);
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Cache maintained by <a href="https://github.com/xydu">xydu</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
